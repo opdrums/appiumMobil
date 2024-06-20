@@ -1,0 +1,56 @@
+package definitions;
+
+import cucumber.api.Scenario;
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.remote.MobileCapabilityType;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import utils.Utils;
+import utils.driver_factory.DriverFactory;
+
+import java.io.IOException;
+import java.net.URL;
+
+public class Hooks {
+
+    static AppiumDriver<MobileElement> driver;
+
+    @Before
+    public void config() throws IOException {
+        //configutacion de las variables del archivo configuration Properties
+        String name = Utils.readProperty("configurations", "PLATFORM_NAME");
+        String version = Utils.readProperty("configurations", "PLATFORM_VERSION");
+        String idPhone = Utils.readProperty("configurations", "DEVICE_NAME");
+        String rute = Utils.readProperty("configurations", "RUTA_LOCAL");
+        String apk = Utils.readProperty("configurations","APK");
+
+        //configuracion de las capabilities
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, name);
+        capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, version);
+        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, idPhone);
+        capabilities.setCapability(MobileCapabilityType.APP, apk);
+
+        // Iniciar sesión en Appium Server
+        URL url = new URL(rute);
+        driver = new AndroidDriver<>(url, capabilities);
+
+        // Configurar el driver en DriverFactory
+        DriverFactory.setDriver(driver);
+    }
+
+    public static WebDriver getDriver() {
+        return driver;
+    }
+
+    @After
+    public void quitDriver() {
+        if (driver != null) {
+            DriverFactory.quitDriver();
+        }
+    }
+}

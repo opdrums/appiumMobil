@@ -14,13 +14,15 @@ import utils.driver_factory.DriverFactory;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.concurrent.TimeUnit;
+import utils.reporting.Report;
 
 public class Hooks {
-
+    Scenario scenario;
     static AppiumDriver<MobileElement> driver;
 
     @Before
-    public void config() throws IOException {
+    public void config(Scenario scenario) throws IOException {
         //configutacion de las variables del archivo configuration Properties
         String name = Utils.readProperty("configurations", "PLATFORM_NAME");
         String version = Utils.readProperty("configurations", "PLATFORM_VERSION");
@@ -41,6 +43,11 @@ public class Hooks {
 
         // Configurar el driver en DriverFactory
         DriverFactory.setDriver(driver);
+
+        //iniciar el reporte
+        this.scenario = scenario;
+        Report.startReport(scenario.getName());
+
     }
 
     public static WebDriver getDriver() {
@@ -48,9 +55,21 @@ public class Hooks {
     }
 
     @After
-    public void quitDriver() {
-        if (driver != null) {
-            DriverFactory.quitDriver();
+    public void quitDriver(Scenario scenario) {
+        if (scenario.isFailed()) {
+            Report.reportarCasoFallido(("MODULO: "+System.getProperty("tags")+" --> ESCENARIO: "+scenario.getName()).replace("null","Pibox"));
+            if (DriverFactory.getDriver() == null) {
+                Report.reports("FAIL", "Se finaliza el flujo automatizado debido al error generado!");
+            } else {
+                DriverFactory.getDriver().manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+                Report.reports("FAIL", "Se finaliza el flujo automatizado debido al error generado!", Report.takeSnapShot(DriverFactory.getDriver()));
+            }
+        } else {
+            Report.reports("PASS", "Se finaliza el flujo automatizado correctamente!");
         }
+        Report.finishReport();
+
+        DriverFactory.quitDriver();
     }
+
 }

@@ -16,21 +16,31 @@ public class loginUserStep {
     }
 
     @Step
-    public void clickButtonSingIn(){
-        loginUserPo.clickButtonLogin();
+    public void clickButtonNotification(String elm){
+        loginUserPo.notificationAppAllow(elm);
     }
 
     @Step
-    public void selectAccount(String user){
-        loginUserPo.selectLoginUser(user);
+    public void clickButtonSingIn(String login){
+        loginUserPo.loginAppBoking(login);
     }
 
     @Step
-    public void validateViewMusicApp(){
-        if(!loginUserPo.validateHomeSong()){
-            Report.reports("FAIL","not found song", Report.takeSnapShot(DriverFactory.getDriver()));
-            Assert.fail("opp bug");
+    public void clickAccountGmail(String email){
+        loginUserPo.accountGmail(email);
+    }
+
+    @Step
+    public void formLogginUser(String email, String password){
+        loginUserPo.formLoginApp(email,password);
+    }
+
+    @Step
+    public void validateViewBooking(){
+        if(loginUserPo.validationBooking()){
+            Report.reports("PASS","Welcome to booking.com ", Report.takeSnapShot(DriverFactory.getDriver()));
+        }else if (loginUserPo.validateAlert()){
+            Report.reports("WARNING","mssg: " + loginUserPo.getTextValidation(), Report.takeSnapShot(DriverFactory.getDriver()));
         }
-        Report.reports("PASS","song good", Report.takeSnapShot(DriverFactory.getDriver()));
     }
 }

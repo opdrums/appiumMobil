@@ -39,7 +39,7 @@ public class WebBasePage extends PageObject {
     }
 
     public void clickElementList(String locator, String elm){
-        WebElement element = getElement(locator,elm);
+        WebElement element = getElement(locator,elm.trim());
         waitUntilElementIsVisible(element);
         element.click();
     }

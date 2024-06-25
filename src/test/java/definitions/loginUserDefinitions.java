@@ -21,19 +21,30 @@ public class loginUserDefinitions {
 
     static AppiumDriver<MobileElement> driver;
 
-    @Given("user click button sign in")
-    public void openApk() {
-        loginUserStep.clickButtonSingIn();
+    @Given("^user turn notification(.*)$")
+    public void clickNotification(String elm){
+        loginUserStep.clickButtonNotification(elm);
     }
 
-    @When("^select to account (.*)$")
-    public void selectAccountUser(String user){
-        loginUserStep.selectAccount(user);
+
+    @Given("^user click button sign in (.*)$")
+    public void selectOptionLogin(String login) {
+        loginUserStep.clickButtonSingIn(login);
     }
 
-    @Then("visuality view song music")
-    public void validateHomeMusic(){
-        loginUserStep.validateViewMusicApp();
+    @When("^enter form (.*) and (.*)$")
+    public void selectAccountUser(String email, String password){
+        loginUserStep.formLogginUser(email, password);
+    }
 
+    @When("^select account gmail (.*)$")
+    public void selectAccountGmail(String email){
+        loginUserStep.clickAccountGmail(email.trim());
+    }
+
+
+    @Then("visuality a validation booking")
+    public void validateBooking(){
+        loginUserStep.validateViewBooking();
     }
 }

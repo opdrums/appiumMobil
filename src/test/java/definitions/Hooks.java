@@ -36,6 +36,7 @@ public class Hooks {
         capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, version);
         capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, idPhone);
         capabilities.setCapability(MobileCapabilityType.APP, apk);
+        capabilities.setCapability("appium:appWaitForLaunch", false);
 
         // Iniciar sesión en Appium Server
         URL url = new URL(rute);

@@ -36,11 +36,25 @@ public class loginUserStep {
     }
 
     @Step
-    public void validateViewBooking(){
-        if(loginUserPo.validationBooking()){
-            Report.reports("PASS","Welcome to booking.com ", Report.takeSnapShot(DriverFactory.getDriver()));
-        }else if (loginUserPo.validateAlert()){
-            Report.reports("WARNING","mssg: " + loginUserPo.getTextValidation(), Report.takeSnapShot(DriverFactory.getDriver()));
+    public void formLogginUserFacebook(String email, String password){
+        loginUserPo.accountFacebook(email, password);
+    }
+
+
+
+    @Step
+    public void validateViewBooking() {
+        if (loginUserPo.validationBooking()) {
+            Report.reports("PASS", "Welcome to booking.com", Report.takeSnapShot(DriverFactory.getDriver()));
+        } else if (loginUserPo.validateAlert()) {
+            String errorMessage = "mssg: " + loginUserPo.getTextValidation();
+            Report.reports("FAIL", errorMessage, Report.takeSnapShot(DriverFactory.getDriver()));
+            Assert.fail(errorMessage);
+        } else if (loginUserPo.validateAlertNotFoundAccount()) {
+            String errorMessage = "mssg: " + loginUserPo.getTextNotFoundAccountFacebook();
+            Report.reports("FAIL", errorMessage, Report.takeSnapShot(DriverFactory.getDriver()));
+            Assert.fail(errorMessage);
         }
     }
+
 }

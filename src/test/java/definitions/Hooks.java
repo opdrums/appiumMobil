@@ -56,20 +56,7 @@ public class Hooks {
     }
 
     @After
-    public void quitDriver(Scenario scenario) {
-        if (scenario.isFailed()) {
-            Report.reportarCasoFallido(("MODULO: "+System.getProperty("tags")+" --> ESCENARIO: "+scenario.getName()).replace("null","Pibox"));
-            if (DriverFactory.getDriver() == null) {
-                Report.reports("FAIL", "Se finaliza el flujo automatizado debido al error generado!");
-            } else {
-                DriverFactory.getDriver().manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
-                Report.reports("FAIL", "Se finaliza el flujo automatizado debido al error generado!", Report.takeSnapShot(DriverFactory.getDriver()));
-            }
-        } else {
-            Report.reports("PASS", "Se finaliza el flujo automatizado correctamente!");
-        }
-        Report.finishReport();
-
+    public void quitDriver() {
         DriverFactory.quitDriver();
     }
 

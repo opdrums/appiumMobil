@@ -20,3 +20,13 @@ Feature: How to automation login User app
     Examples:
       | login                | email                |  |
       | Continue with Google | operez6921@gmail.com |  |
+
+  @loginAppFacebook
+  Scenario Outline:
+    Given user click button sign in  <login>
+    When enter field <email> and <password> facebook
+    Then visuality a validation booking
+
+    Examples:
+      | login                  | email             | password |
+      | Continue with Facebook | example@gmail.com | 123456   |

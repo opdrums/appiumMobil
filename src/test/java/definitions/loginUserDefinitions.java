@@ -42,6 +42,11 @@ public class loginUserDefinitions {
         loginUserStep.clickAccountGmail(email.trim());
     }
 
+    @When("^enter field (.*) and (.*) facebook$")
+    public void logginAccountFacebook(String email, String password){
+        loginUserStep.formLogginUserFacebook(email, password);
+    }
+
 
     @Then("visuality a validation booking")
     public void validateBooking(){

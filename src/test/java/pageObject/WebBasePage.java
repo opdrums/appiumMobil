@@ -25,7 +25,7 @@ import static org.awaitility.Awaitility.await;
 public class WebBasePage extends PageObject {
 
     private static String pathDownloads ="";
-    private static final int WAIT_TIMEOUT = 50;
+    private static final int WAIT_TIMEOUT = 10;
     private String loadedBar = "//*[@class='MuiCircularProgress-svg' or @class='loading-ripple' or contains(@class,'MuiCircularProgress') or contains(@class,'ui active transition visible') ]";
     private static final int POLLING = 100;
 

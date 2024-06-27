@@ -2,7 +2,7 @@ package steps;
 
 import net.thucydides.core.annotations.Step;
 import org.junit.Assert;
-import pageObject.loginUserPo;
+import pageObjects.loginUserPo;
 import utils.driver_factory.DriverFactory;
 import utils.reporting.Report;
 

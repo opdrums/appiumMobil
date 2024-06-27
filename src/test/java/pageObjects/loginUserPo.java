@@ -1,4 +1,4 @@
-package pageObject;
+package pageObjects;
 
 
 public class loginUserPo extends WebBasePage {

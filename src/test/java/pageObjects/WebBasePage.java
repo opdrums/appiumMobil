@@ -1,4 +1,4 @@
-package pageObject;
+package pageObjects;
 
 
 import net.thucydides.core.pages.PageObject;
@@ -8,17 +8,9 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import utils.Utils;
 import utils.driver_factory.DriverFactory;
 import utils.reporting.Report;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import static java.awt.SystemColor.text;
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.awaitility.Awaitility.await;
 

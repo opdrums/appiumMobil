@@ -44,13 +44,13 @@ public class loginUserStep {
 
     @Step
     public void validateViewBooking() {
-        if (loginUserPo.validationBooking()) {
+        if(loginUserPo.validationTextBooking()) {
             Report.reports("PASS", "Welcome to booking.com", Report.takeSnapShot(DriverFactory.getDriver()));
-        } else if (loginUserPo.validateAlert()) {
+        }else if(loginUserPo.validateAlert()) {
             String errorMessage = "mssg: " + loginUserPo.getTextValidation();
             Report.reports("FAIL", errorMessage, Report.takeSnapShot(DriverFactory.getDriver()));
             Assert.fail(errorMessage);
-        } else if (loginUserPo.validateAlertNotFoundAccount()) {
+        }else if (loginUserPo.validateAlertNotFoundAccount()) {
             String errorMessage = "mssg: " + loginUserPo.getTextNotFoundAccountFacebook();
             Report.reports("FAIL", errorMessage, Report.takeSnapShot(DriverFactory.getDriver()));
             Assert.fail(errorMessage);

@@ -10,7 +10,7 @@ public class loginUserPo extends WebBasePage {
    private String clickButtonContinue = "//android.widget.Button";
    private String fielPassword = "//android.widget.EditText[@resource-id='com.booking:id/identity_text_input_edit_text']";
    private String buttonLoggin = "(//android.widget.Button[@resource-id='com.booking:id/identity_landing_social_button'])[1]";
-   private String validateAlert = "//android.widget.TextView[@resource-id='com.booking:id/textinput_error']";
+   private String validateAlertForm = "//android.widget.TextView[@resource-id='com.booking:id/textinput_error']";
    private String validationBooking = "//android.view.ViewGroup[@resource-id='com.booking:id/facet_with_bui_booking_header_toolbar']/android.widget.LinearLayout[1]/android.widget.ImageView";
    private String buttonAccountTextGmail = "//android.widget.TextView[@resource-id='com.google.android.gms:id/account_name' and @text='Replaceable']";
    private String fieldEmailFacebook = "//android.webkit.WebView[@text='Log into Facebook | Facebook']/android.view.View/android.view.View/android.view.View[2]/android.view.View[1]/android.view.View[1]/android.view.View[1]/android.view.View/android.view.View/android.widget.EditText";
@@ -21,7 +21,7 @@ public class loginUserPo extends WebBasePage {
 
    public void notificationAppAllow(String elm){
        clickElementList(buttonText, elm);
-       element(clickNotification).click();
+       clickELementLocator(clickNotification);
    }
 
     public void loginAppBoking(String login){
@@ -29,24 +29,24 @@ public class loginUserPo extends WebBasePage {
     }
 
     public void formLoginApp(String email, String password){
-       element(fieldEmail).sendKeys(email);
+       sendTextLocator(fieldEmail, email);
        waitUntilElementIsVisible(element(clickButtonContinue));
-       element(clickButtonContinue).click();
+       clickELementLocator(clickButtonContinue);
        waitUntilElementIsVisible(element(fielPassword));
-       element(fielPassword).sendKeys(password);
-       element(buttonLoggin).click();
+       sendTextLocator(fielPassword, password);
+       clickELementLocator(buttonLoggin);
     }
 
     public boolean validateAlert(){
-       return validateELmentLocator(validateAlert);
-    }
-
-    public boolean validationBooking(){
-       return  validateELmentLocator(validationBooking);
+       return validateELmentLocator(validateAlertForm);
     }
 
     public String getTextValidation(){
-       return getTextElementLocator(validateAlert);
+        return getTextElementLocator(validateAlertForm);
+    }
+
+    public boolean validationTextBooking(){
+       return  validateELmentLocator(validationBooking);
     }
 
     public void accountGmail(String email){
@@ -55,9 +55,9 @@ public class loginUserPo extends WebBasePage {
 
     public void accountFacebook(String email, String password){
        waitUntilElementIsVisible(element(fieldEmailFacebook));
-       element(fieldEmailFacebook).sendKeys(email);
-       element(fieldPasswordFacebook).sendKeys(password);
-       element(buttonLoginFacebook).click();
+       sendTextLocator(fieldEmailFacebook, email);
+       sendTextLocator(fieldPasswordFacebook, password);
+       clickELementLocator(buttonLoginFacebook);
     }
 
     public boolean validateAlertNotFoundAccount(){

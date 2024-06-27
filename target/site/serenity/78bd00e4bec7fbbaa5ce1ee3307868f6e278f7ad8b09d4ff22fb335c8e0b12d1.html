@@ -148,7 +148,7 @@
             <a href="576946480b52ad056d6f5bddf874399c83582ecf90963cc074a14c70580e7d9f.html"><i class="fa fa-comments-o"></i> Features</a>
         </li>
     </ul>
-    <span class="date-and-time"><a href="build-info.html"><i class="fa fa-info-circle"></i></a> Report generated 26-06-2024 16:54</span>
+    <span class="date-and-time"><a href="build-info.html"><i class="fa fa-info-circle"></i></a> Report generated 26-06-2024 23:05</span>
     <br style="clear:left"/>
 </div>
     <div class="clr"></div>
@@ -173,14 +173,14 @@
                                 <p class="tag">
                                     <span class="badge tag-badge" style="background:default;">
                                     <i class="fa fa-tag"></i>&nbsp;<a class="tagLink" style="background:default;"
-                                                                      href="3fe1600a7ca73453723bf7163c3d111ae23477fadf79ee25b0f161b3241577bb.html">Login App Gmail
+                                                                      href="95108717f10dd790cb8ea2e1bca4d5458c091567c7a8c3b0751ff4607e4c17e6.html">Mobil
                                     (tag)</a>
                                 </span>
                                 </p>
                                 <p class="tag">
                                     <span class="badge tag-badge" style="background:default;">
                                     <i class="fa fa-tag"></i>&nbsp;<a class="tagLink" style="background:default;"
-                                                                      href="95108717f10dd790cb8ea2e1bca4d5458c091567c7a8c3b0751ff4607e4c17e6.html">Mobil
+                                                                      href="81f88d6934550ecd4d936379d8f3dfbd460318692771e76e10844bc8c45078d1.html">Login App Formal
                                     (tag)</a>
                                 </span>
                                 </p>
@@ -192,9 +192,9 @@
                 <table class="outcome-header">
                     <tr>
                         <td colspan="2" class="test-title-bar">
-                            <span class="outcome-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon fa-2x' title='SUCCESS'></i></a></span>
+                            <span class="outcome-icon"><a href='##beforetable'><i class='fa fa-times-circle failure-icon fa-2x' title='FAILURE'></i></a></span>
                             <span class="test-case-title">
-                                <span class="success-color">
+                                <span class="failing-color">
                                     
                                         <span class="related-issue-title"></span>
                                 </span>
@@ -215,7 +215,7 @@
         <div class="story-title">
             <h3 class="story-header">Scenario Outline</h3>
 
-            <div class="scenario">Given user click button sign in  &lt;login&gt;<br>When select account gmail &lt;email&gt;<br>Then visuality a validation booking</div>
+            <div class="scenario">Given user click button sign in  &lt;login&gt;<br>When enter form &lt;email&gt; and &lt;password&gt;<br>Then visuality a validation booking</div>
 
         </div>
 
@@ -235,20 +235,20 @@
                         <th>#</th>
                             <th>Login</th>
                             <th>Email</th>
-                            <th></th>
+                            <th>Password</th>
                     </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="test-SUCCESS"><a href="#0">1</a></td>
-                                <td class="test-SUCCESS"><a
-                                            href="#0">Continue with Google</a>
+                            <td class="test-FAILURE"><a href="#0">1</a></td>
+                                <td class="test-FAILURE"><a
+                                            href="#0">Continue with email</a>
                                 </td>
-                                <td class="test-SUCCESS"><a
-                                            href="#0">operez6921@gmail.com</a>
+                                <td class="test-FAILURE"><a
+                                            href="#0">himalaya@gmail.com</a>
                                 </td>
-                                <td class="test-SUCCESS"><a
-                                            href="#0"></a>
+                                <td class="test-FAILURE"><a
+                                            href="#0">123456</a>
                                 </td>
                         </tr>
                     </tbody>
@@ -272,13 +272,13 @@
                     <td colspan="5"></td>
                 </tr>
 
-                    <tr class="test-SUCCESS">
+                    <tr class="test-FAILURE">
 
                         <td width="50" class="step-icon">
                             <a name="0"></a>
                                 <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0')"
                                    style="display:block">
-                                    <i class="fa fa-plus-square-o imgstepSection0 success-icon"
+                                    <i class="fa fa-plus-square-o imgstepSection0 failure-icon"
                                        style="margin-left: 20px; float:left; padding-right:5px"></i>
                                 </a>
                         </td>
@@ -288,7 +288,7 @@
                                 <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0')"
                                    style="display:block;">
                                     <span class="top-level-step">
-                                                Example: {login=Continue with Google, email=operez6921@gmail.com, =}
+                                                Example: {login=Continue with email, email=himalaya@gmail.com, password=123456}
                                         </span>
                                 </a>
                                 <span class="evidence">
@@ -296,8 +296,8 @@
                             </div>
                         </td>
 
-                        <td width="130"><span class="top-level-step">SUCCESS</span></td>
-                        <td width="100"><span class="top-level-step">28.86s</span></td>
+                        <td width="130"><span class="top-level-step">FAILURE</span></td>
+                        <td width="100"><span class="top-level-step">35.36s</span></td>
                     </tr>
                         <tr>
                             <td colspan="5">
@@ -323,7 +323,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">4.85s</span></td>
+                        <td width="100"><span class="nested-group-step">4.13s</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -337,7 +337,7 @@
                         <td class="step-description-column">
                             <div class="step-description">
                                     <span class="nested-group-step">
-                                                Given user click button sign in  Continue with Google
+                                                Given user click button sign in  Continue with email
                                         </span>
                                 <span class="evidence">
                                 </span>
@@ -345,7 +345,7 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">2.02s</span></td>
+                        <td width="100"><span class="nested-group-step">2.59s</span></td>
                     </tr>
                     <tr class="test-SUCCESS">
 
@@ -359,7 +359,7 @@
                         <td class="step-description-column">
                             <div class="step-description">
                                     <span class="nested-group-step">
-                                                When select account gmail operez6921@gmail.com
+                                                When enter form himalaya@gmail.com and 123456
                                         </span>
                                 <span class="evidence">
                                 </span>
@@ -367,14 +367,14 @@
                         </td>
 
                         <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">3.44s</span></td>
+                        <td width="100"><span class="nested-group-step">5.94s</span></td>
                     </tr>
-                    <tr class="test-SUCCESS">
+                    <tr class="test-FAILURE">
 
                         <td width="70" class="step-icon">
                             <a name="0-3"></a>
                                 <span style="margin-left: 40px;"
-                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-check-circle-o success-icon ' title='SUCCESS'></i></a>
+                                      class="nested-group-icon"><a href='##beforetable'><i class='fa fa-times-circle failure-icon ' title='FAILURE'></i></a>
                                 </span>
                         </td>
 
@@ -388,17 +388,55 @@
                             </div>
                         </td>
 
-                        <td width="130"><span class="nested-group-step">SUCCESS</span></td>
-                        <td width="100"><span class="nested-group-step">6.8s</span></td>
+                        <td width="130"><span class="nested-group-step">FAILURE</span></td>
+                        <td width="100"><span class="nested-group-step">12.92s</span></td>
                     </tr>
+                        <tr class="test-FAILURE">
+                            <td width="40">&nbsp</td>
+                            <td width="%" colspan="3" class="error-message-cell">
+
+
+    <div style="display:block">
+        <div class="table">
+            <div class="row">
+                <div class="col-sm-10" style="padding-left:1.5em; padding-top:0.5em; padding-bottom:0.5em;">
+                    <span class="error-message error-message-title">java.lang.AssertionError: mssg: This password is incorrect &ndash; try again or use a verification link</span>
+                </div>
+                <div class="col-sm-2">
+                    <a class="btn btn-warning details-button" data-toggle="collapse" href="#stacktraceModal-5""
+                       role="button" aria-expanded="false" aria-controls="multiCollapseExample1"><i class="far fa-eye"></i> More details</a>
+                </div>
+             </div>
+        </div>
+    <div>
+
+    <!-- Details Section -->
+    <div class="row stacktrace-details">
+      <div class="col">
+        <div class="collapse multi-collapse" id="stacktraceModal-5">
+            <div class="card">
+                <div class="card-header">
+                    <h4>java.lang.AssertionError </h4>
+                </div>
+                <div class="card-body">
+                    <div>
+                        <pre>steps.loginUserStep.validateViewBooking(loginUserStep.java:52)<br />definitions.loginUserDefinitions.validateBooking(loginUserDefinitions.java:53)<br />✽.visuality a validation booking(src/test/resources/features/loginUserGmail.feature:10)<br /></pre>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+                            </td>
+                        </tr>
 
                                 </table>
                             </td>
                         </tr>
-                <tr class="test-SUCCESS">
+                <tr class="test-FAILURE">
                         <td colspan="2"></td>
-                    <td width="130"><span class="top-level-step"><em>SUCCESS</em></span></td>
-                    <td width="100"><span class="top-level-step"><em>28.97s</em></span></td>
+                    <td width="130"><span class="top-level-step"><em>FAILURE</em></span></td>
+                    <td width="100"><span class="top-level-step"><em>35.48s</em></span></td>
                 </tr>
 
             </table>

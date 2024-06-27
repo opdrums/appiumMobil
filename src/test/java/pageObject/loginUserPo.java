@@ -1,7 +1,5 @@
 package pageObject;
 
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
 public class loginUserPo extends WebBasePage {
    private String buttonText = "//android.widget.TextView[@text='Replaceable']";

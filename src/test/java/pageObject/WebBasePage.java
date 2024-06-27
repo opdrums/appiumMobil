@@ -49,60 +49,60 @@ public class WebBasePage extends PageObject {
     }
 
     // metodo que retorna web element de tipo xpath y reemplaza un string
-    public WebElement getElement(String xpath, String element) {
+    public WebElement getElementXpathReplecable(String xpath, String element) {
         return element(By.xpath(xpath.replace("Replaceable", element)));
     }
 
     //metodo  que retorna  web element de tipo xpath
-    public WebElement getElement2(String xpath) {
+    public WebElement getElementXpath(String xpath) {
         return element(By.xpath(xpath));
     }
 
     //metodo para dar un click a un elemento de una lista
     public void clickElementList(String locator, String elm){
-        WebElement element = getElement(locator,elm.trim());
+        WebElement element = getElementXpathReplecable(locator,elm.trim());
         waitUntilElementIsVisible(element);
         element.click();
     }
 
     //metodo para dar click a elemento
     public void clickELementLocator(String locator){
-        WebElement element = getElement2(locator);
+        WebElement element = getElementXpath(locator);
         waitUntilElementIsVisible(element);
         element.click();
     }
 
     //metodo para envia un texto de una lista
     public void sendTextLocator (String locator, String TextField){
-        WebElement element = getElement2(locator);
+        WebElement element = getElementXpath(locator);
         waitUntilElementIsVisible(element);
         element.sendKeys(TextField);
     }
 
     //metodo para validar un elemento de una lista
     public boolean validateELmentMain(String locator,String elm){
-        WebElement element = getElement(locator, elm);
+        WebElement element = getElementXpathReplecable(locator, elm);
         waitUntilElementIsVisibleNonThrow(element, 10);
         return isVisible(element);
     }
 
     //metodo para validar un elemento
     public boolean validateELmentLocator(String locator){
-        WebElement element = getElement2(locator);
+        WebElement element = getElementXpath(locator);
         waitUntilElementIsVisibleNonThrow(element,10);
         return isVisible(element);
     }
 
     //metodo para obtener el texto de un elemento de una lista
     public String getTextElementMain(String locator, String elm){
-        WebElement element = getElement(locator, elm);
+        WebElement element = getElementXpathReplecable(locator, elm);
         waitUntilElementIsVisible(element);
         return element.getText();
     }
 
     //metodo para obtener el texto de un elemento
     public String getTextElementLocator(String locator){
-       WebElement element = getElement2(locator);
+       WebElement element = getElementXpath(locator);
         waitUntilElementIsVisible(element);
         return element.getText();
     }

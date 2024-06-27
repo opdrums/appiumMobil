@@ -90,7 +90,7 @@ public class Report {
         }
     }
 
-    public static void reportarCasoFallido(String caso) {
+    public static void reportCaseFail(String caso) {
         try {
             String ruta = "Report/CasosFallidos.txt";
             File file = new File(ruta);

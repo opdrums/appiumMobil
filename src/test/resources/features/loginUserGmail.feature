@@ -19,7 +19,7 @@ Feature: How to automation login User app
     Then visuality a validation booking
     Examples:
       | login                | email                |  |
-      | Continue with Google | operez6921@gmail.com |  |
+      | Continue with Google | testng97@gmail.com |  |
 
   @loginAppFacebook
   Scenario Outline:

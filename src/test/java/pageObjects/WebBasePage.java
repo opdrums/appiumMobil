@@ -94,7 +94,7 @@ public class WebBasePage extends PageObject {
 
     //metodo para obtener el texto de un elemento
     public String getTextElementLocator(String locator){
-       WebElement element = getElementXpath(locator);
+        WebElement element = getElementXpath(locator);
         waitUntilElementIsVisible(element);
         return element.getText();
     }
@@ -125,12 +125,11 @@ public class WebBasePage extends PageObject {
         }
     }
 
-
     //metodo para hacer un scroll a un elemento
     public void moverScrollAUnElemento(WebElement element) {
         try {
-            waitUntilElementIsVisible(element);
-            ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", element);
+           waitUntilElementIsVisible(element);
+           ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", element);
             waitTime(1);
             waitUntilElementIsVisible(element);
         }catch (Exception e){

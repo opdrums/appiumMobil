@@ -1,0 +1,20 @@
+
+FAILED CASES IN AUTOMATED REGRESSION:
+
+MODULO: Pibox --> ESCENARIO: 
+MODULO: Pibox --> ESCENARIO: 
+MODULO: Pibox --> ESCENARIO: 
+MODULO: Pibox --> ESCENARIO: 
+MODULO: booking --> ESCENARIO: 
+MODULO: booking --> ESCENARIO: 
+MODULO: booking --> ESCENARIO: 
+MODULO: booking --> ESCENARIO: 
+MODULO: booking --> ESCENARIO: 
+MODULO: booking --> ESCENARIO: 
+MODULO: booking --> ESCENARIO: 
+MODULO: booking --> ESCENARIO: 
+MODULO: booking --> ESCENARIO: 
+MODULO: booking --> ESCENARIO: 
+MODULO: booking --> ESCENARIO: 
+MODULO: booking --> ESCENARIO: 
+MODULO: booking --> ESCENARIO: 

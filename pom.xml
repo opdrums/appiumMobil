@@ -50,6 +50,12 @@
             <artifactId>selenium-java</artifactId>
             <version>${selenium.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.github.stephenc.monte</groupId>
+            <artifactId>monte-screen-recorder</artifactId>
+            <version>0.7.7.0</version>
+        </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
@@ -125,4 +131,19 @@
             </plugin>
         </plugins>
     </build>
+
+    <repositories>
+        <repository>
+            <id>testrecorder-repo</id>
+            <url>https://repo.testrecorder.io/maven2</url>
+        </repository>
+    </repositories>
+
+    <dependency>
+        <groupId>io.testrecorder</groupId>
+        <artifactId>testrecorder-annotations</artifactId>
+        <version>0.10.5</version>
+        <scope>test</scope>
+    </dependency>
+
 </project>

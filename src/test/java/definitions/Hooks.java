@@ -16,13 +16,14 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 import utils.reporting.Report;
+import utils.reporting.MyScreenRecorder;
 
 public class Hooks {
     Scenario scenario;
     static AppiumDriver<MobileElement> driver;
 
     @Before
-    public void config(Scenario scenario) throws IOException {
+    public void config(Scenario scenario) throws Exception {
         //configutacion de las variables del archivo configuration Properties
         String name = Utils.readProperty("configurations", "PLATFORM_NAME");
         String version = Utils.readProperty("configurations", "PLATFORM_VERSION");
@@ -48,7 +49,7 @@ public class Hooks {
         //iniciar el reporte
         this.scenario = scenario;
         Report.startReport(scenario.getName());
-
+        //MyScreenRecorder.startRecord(scenario.getName());
     }
 
     public static WebDriver getDriver() {
@@ -56,9 +57,9 @@ public class Hooks {
     }
 
     @After
-    public void quitDriver(Scenario scenario) {
+    public void quitDriver(Scenario scenario) throws Exception {
         if (scenario.isFailed()) {
-            Report.reportCaseFail(("MODULO: "+System.getProperty("tags")+" --> ESCENARIO: "+scenario.getName()).replace("null","Pibox"));
+            Report.reportCaseFail(("MODULO: "+System.getProperty("tags")+" --> ESCENARIO: "+scenario.getName()).replace("null","booking"));
             if (DriverFactory.getDriver() == null) {
                 Report.reports("FAIL", "The automated flow is terminated due to the error generated!");
             } else {
@@ -66,9 +67,10 @@ public class Hooks {
                 Report.reports("FAIL", "The automated flow is terminated due to the error generated!", Report.takeSnapShot(DriverFactory.getDriver()));
             }
         } else {
-            Report.reports("PASS", "The automated flow is completed successfully!");
+            Report.reports("PASS", "The automated flow is completed successfully!", Report.takeSnapShot(DriverFactory.getDriver()));
         }
         Report.finishReport();
+        //MyScreenRecorder.stopRecord();
         DriverFactory.quitDriver();
     }
 

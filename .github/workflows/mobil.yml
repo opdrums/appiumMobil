@@ -25,18 +25,11 @@ jobs:
       - name: Run Tests with Maven
         run: mvn -B test --file pom.xml
 
-      - name: Generate Test Report
-        run: mvn surefire-report:report
+      - name: Generate Allure Report
+        run: mvn allure:report
 
-      - name: Upload HTML Report
+      - name: Upload Allure Report
         uses: actions/upload-artifact@v4
         with:
-          name: test-report
-          path: target/site/surefire-report.html
-
-      - name: Analyze test results
-        run: |
-          REPORT_FILE="target/site/surefire-report.html"
-          echo "HTML report generated at: $REPORT_FILE"
-      - name: List generated files
-        run: ls -R target/site
+          name: allure-report
+          path: target/site/allure-maven

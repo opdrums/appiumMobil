@@ -33,3 +33,6 @@ jobs:
         with:
           name: allure-report
           path: target/site/allure-maven
+
+      - name: List generated files
+        run: ls -R target/site

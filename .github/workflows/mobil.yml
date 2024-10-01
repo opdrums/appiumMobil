@@ -12,26 +12,18 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      #- name: Set up JDK 17
-        #uses: actions/setup-java@v4
-        #with:
-          #java-version: '17'
-          #distribution: 'temurin'
-        #  cache: maven
-
-      #- name: Build with Maven
-       # run: mvn -B package --file pom.xml
-
-      #- name: Run Tests with Maven
-       # run: mvn -B test --file pom.xml
-
-
-      - uses: actions/setup-node@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
         with:
-          node-version: '19'
-          cache: 'npm'
-      - run: npm ci
-      - run: npm run test
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Build with Maven
+        run: mvn -B package --file pom.xml
+
+      - name: Run Tests with Maven
+        run: mvn -B test --file pom.xml
 
       - uses: actions/upload-artifact@v4
         if: always()

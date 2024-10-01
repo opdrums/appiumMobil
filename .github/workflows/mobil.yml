@@ -1,0 +1,42 @@
+name: Run Selenium Tests
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    services:
+      selenium:
+        image: selenium/standalone-chrome:latest
+        ports:
+          - 4444:4444
+        options: >-
+          --shm-size 2g
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11' # o la versión que necesites
+
+      - name: Build with Maven
+        run: mvn clean install
+
+      - name: Run Selenium Tests
+        run: mvn test
+
+      - name: Generate Allure Report
+        run: mvn allure:report
+
+      - name: Upload Allure Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: allure-report
+          path: target/site/allure-maven/index.html

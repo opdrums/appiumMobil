@@ -18,3 +18,9 @@ MODULO: booking --> ESCENARIO:
 MODULO: booking --> ESCENARIO: 
 MODULO: booking --> ESCENARIO: 
 MODULO: booking --> ESCENARIO: 
+MODULO: booking --> ESCENARIO: 
+MODULO: booking --> ESCENARIO: 
+MODULO: booking --> ESCENARIO: 
+MODULO: booking --> ESCENARIO: 
+MODULO: booking --> ESCENARIO: 
+MODULO: booking --> ESCENARIO: 

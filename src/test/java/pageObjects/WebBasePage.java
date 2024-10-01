@@ -21,25 +21,6 @@ public class WebBasePage extends PageObject {
     private String loadedBar = "//*[@class='MuiCircularProgress-svg' or @class='loading-ripple' or contains(@class,'MuiCircularProgress') or contains(@class,'ui active transition visible') ]";
     private static final int POLLING = 100;
 
-    //bloque de codigo de tipo booleano que contiene si elemento es visible
-    protected boolean isVisible(WebElement webElement) {
-        try {
-            return webElement.isDisplayed();
-        } catch (Exception e) {
-            return false;
-        }
-    }
-
-    //metodo para dar un back
-    public void returnLastPage() {
-        getDriver().navigate().back();
-    }
-
-    //metodo para refrescar una pagina
-    public void refreshPage() {
-        getDriver().navigate().refresh();
-    }
-
     // metodo que retorna web element de tipo xpath y reemplaza un string
     public WebElement getElementXpathReplecable(String xpath, String element) {
         return element(By.xpath(xpath.replace("Replaceable", element)));
@@ -50,53 +31,18 @@ public class WebBasePage extends PageObject {
         return element(By.xpath(xpath));
     }
 
-    //metodo para dar un click a un elemento de una lista
-    public void clickElementList(String locator, String elm){
-        WebElement element = getElementXpathReplecable(locator,elm.trim());
-        waitUntilElementIsVisible(element);
-        element.click();
+    public  WebElement getElementId(String id){
+        return  element(By.id(id));
     }
 
-    //metodo para dar click a elemento
-    public void clickELementLocator(String locator){
-        WebElement element = getElementXpath(locator);
-        waitUntilElementIsVisible(element);
-        element.click();
-    }
 
-    //metodo para envia un texto de una lista
-    public void sendTextLocator (String locator, String TextField){
-        WebElement element = getElementXpath(locator);
-        waitUntilElementIsVisible(element);
-        element.sendKeys(TextField);
-    }
-
-    //metodo para validar un elemento de una lista
-    public boolean validateELmentMain(String locator,String elm){
-        WebElement element = getElementXpathReplecable(locator, elm);
-        waitUntilElementIsVisibleNonThrow(element, 10);
-        return isVisible(element);
-    }
-
-    //metodo para validar un elemento
-    public boolean validateELmentLocator(String locator){
-        WebElement element = getElementXpath(locator);
-        waitUntilElementIsVisibleNonThrow(element,10);
-        return isVisible(element);
-    }
-
-    //metodo para obtener el texto de un elemento de una lista
-    public String getTextElementMain(String locator, String elm){
-        WebElement element = getElementXpathReplecable(locator, elm);
-        waitUntilElementIsVisible(element);
-        return element.getText();
-    }
-
-    //metodo para obtener el texto de un elemento
-    public String getTextElementLocator(String locator){
-        WebElement element = getElementXpath(locator);
-        waitUntilElementIsVisible(element);
-        return element.getText();
+    //bloque de codigo de tipo booleano que contiene si elemento es visible
+    protected boolean isVisible(WebElement webElement) {
+        try {
+            return webElement.isDisplayed();
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     //metodo para hacer una espera implicita y espera que se ha visible si no manda un excepcion
@@ -104,7 +50,7 @@ public class WebBasePage extends PageObject {
         try {
             await().atMost(WAIT_TIMEOUT, SECONDS).until(() -> isVisible(element));
         } catch (ConditionTimeoutException e) {
-           Report.reports("FAIL",String.format("No found element: %s: ", element), Report.takeSnapShot(DriverFactory.getDriver())) ;
+            Report.reports("FAIL",String.format("No found element: %s: ", element), Report.takeSnapShot(DriverFactory.getDriver())) ;
             throw new ConditionTimeoutException(String.format("No found element \nElement: %s: ", element));
         }
     }
@@ -125,6 +71,87 @@ public class WebBasePage extends PageObject {
         }
     }
 
+    //metodo para hacer una espera explicita
+    public void waitTime(int segundos){
+        try {
+            Thread.sleep(segundos*1000);
+        }catch (InterruptedException ignored){
+
+        }
+    }
+
+    //metodo para dar un back
+    public void returnLastPage() {
+        getDriver().navigate().back();
+    }
+
+    //metodo para refrescar una pagina
+    public void refreshPage() {
+        getDriver().navigate().refresh();
+    }
+
+    //metodo para dar un click a un elemento de una lista
+    public void clickElementList(String locator, String elm){
+        WebElement element = getElementXpathReplecable(locator,elm.trim());
+        waitUntilElementIsVisible(element);
+        element.click();
+    }
+
+    //metodo para dar click a elemento xpath
+    public void clickElementLocator(String locator){
+        WebElement element = getElementXpath(locator);
+        waitUntilElementIsVisible(element);
+        element.click();
+    }
+
+    //metodo para dar click a elemento xpath
+    public void clickElementId(String locator){
+        WebElement element = getElementId(locator);
+        waitUntilElementIsVisible(element);
+        element.click();
+    }
+
+    //metodo para envia un texto de una lista
+    public void sendTextLocator (String locator, String TextField){
+        WebElement element = getElementXpath(locator);
+        waitUntilElementIsVisible(element);
+        element.sendKeys(TextField);
+    }
+
+    //metodo para validar un elemento de una lista
+    public boolean validateELmentMain(String locator,String elm){
+        WebElement element = getElementXpathReplecable(locator, elm);
+        waitUntilElementIsVisibleNonThrow(element, 10);
+        return isVisible(element);
+    }
+
+    //metodo para validar un elemento
+    public boolean validateElmentLocator(String locator){
+        WebElement element = getElementXpath(locator);
+        waitUntilElementIsVisibleNonThrow(element,10);
+        return isVisible(element);
+    }
+
+    public boolean validateElmentLocatorId(String locator){
+        WebElement element = getElementId(locator);
+        waitUntilElementIsVisibleNonThrow(element,10);
+        return isVisible(element);
+    }
+
+    //metodo para obtener el texto de un elemento de una lista
+    public String getTextElementMain(String locator, String elm){
+        WebElement element = getElementXpathReplecable(locator, elm);
+        waitUntilElementIsVisible(element);
+        return element.getText();
+    }
+
+    //metodo para obtener el texto de un elemento
+    public String getTextElementLocator(String locator){
+        WebElement element = getElementXpath(locator);
+        waitUntilElementIsVisible(element);
+        return element.getText();
+    }
+
     //metodo para hacer un scroll a un elemento
     public void moverScrollAUnElemento(WebElement element) {
         try {
@@ -140,15 +167,6 @@ public class WebBasePage extends PageObject {
     public void moverCursorAElemento(WebElement element) {
         waitFor(element).isVisible();
         withAction().moveToElement(element).build().perform();
-    }
-
-    //metodo para hacer una espera explicita
-    public void waitTime(int segundos){
-        try {
-            Thread.sleep(segundos*1000);
-        }catch (InterruptedException ignored){
-
-        }
     }
 
     //metodo para dar click una alerta de texto

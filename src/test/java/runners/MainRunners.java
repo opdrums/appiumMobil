@@ -17,7 +17,7 @@ import java.io.IOException;
 @CucumberOptions(
         features = "src/test/resources/features"
         ,glue = "definitions"
-        ,tags = "@buy"
+        ,tags = "@mobil"
         ,monochrome = true
         ,snippets = SnippetType.CAMELCASE
 )

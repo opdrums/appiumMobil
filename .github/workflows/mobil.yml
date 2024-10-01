@@ -38,3 +38,5 @@ jobs:
         run: |
           REPORT_FILE="target/site/surefire-report.html"
           echo "HTML report generated at: $REPORT_FILE"
+      - name: List generated files
+        run: ls -R target/site

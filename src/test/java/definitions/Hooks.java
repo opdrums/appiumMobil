@@ -67,7 +67,7 @@ public class Hooks {
                 Report.reports("FAIL", "The automated flow is terminated due to the error generated!", Report.takeSnapShot(DriverFactory.getDriver()));
             }
         } else {
-            Report.reports("PASS", "The automated flow is completed successfully!", Report.takeSnapShot(DriverFactory.getDriver()));
+            Report.reports("PASS", "The automated flow is completed successfully!");
         }
         Report.finishReport();
         //MyScreenRecorder.stopRecord();

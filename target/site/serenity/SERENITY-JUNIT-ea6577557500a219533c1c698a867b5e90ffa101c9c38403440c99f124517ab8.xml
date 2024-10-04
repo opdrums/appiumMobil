@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="1" name="Automate User App register" skipped="0" tests="1" time="36.61" timestamp="2024-10-03 09:17:02"><testcase name="Register succesfully"><failure message="bug Register user" type="java.lang.AssertionError">bug Register user</failure><system-err>bug Register user
+steps.createUserStep.validateUserRegister(createUserStep.java:31)
+definitions.createUserDefinition.validateRegisterSuccessApp(createUserDefinition.java:27)
+✽.the user should see success register(src/test/resources/features/registerUser.feature:10)
+</system-err></testcase></testsuite>

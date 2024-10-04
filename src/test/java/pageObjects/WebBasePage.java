@@ -1,15 +1,21 @@
 package pageObjects;
 
 
+import io.appium.java_client.TouchAction;
+import io.appium.java_client.touch.WaitOptions;
+import io.appium.java_client.touch.offset.PointOption;
 import net.thucydides.core.pages.PageObject;
 import org.awaitility.core.ConditionTimeoutException;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.driver_factory.DriverFactory;
 import utils.reporting.Report;
+
+import java.time.Duration;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.awaitility.Awaitility.await;
@@ -152,23 +158,6 @@ public class WebBasePage extends PageObject {
         return element.getText();
     }
 
-    //metodo para hacer un scroll a un elemento
-    public void moverScrollAUnElemento(WebElement element) {
-        try {
-           waitUntilElementIsVisible(element);
-           ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", element);
-            waitTime(1);
-            waitUntilElementIsVisible(element);
-        }catch (Exception e){
-        }
-    }
-
-    //metodo para mover el cursos a un elemento
-    public void moverCursorAElemento(WebElement element) {
-        waitFor(element).isVisible();
-        withAction().moveToElement(element).build().perform();
-    }
-
     //metodo para dar click una alerta de texto
     public String getTextAlert() {
         try{
@@ -183,6 +172,52 @@ public class WebBasePage extends PageObject {
         try{
             getDriver().switchTo().alert().accept();
         }catch (Exception e){
+        }
+    }
+
+    //metodo para hacer un scroll a un elemento web
+    public void moverScrollAUnElemento(String locator) {
+        try {
+            WebElement element = getElementXpath(locator);
+            waitUntilElementIsVisible(element);
+            ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", element);
+            waitTime(1);
+        }catch (Exception e){
+        }
+    }
+
+    //metodo para mover el cursos a un elemento web
+    public void moverCursorElemento(String locator) {
+        WebElement element = getElementXpath(locator);
+        waitUntilElementIsVisible(element);
+        withAction().moveToElement(element).build().perform();
+    }
+
+    //metodo para mover el cursos a un elemento en mobil
+    public void moverScrollElementMobil(String locator) {
+        try {
+            // Esperar hasta que el elemento esté visible
+            WebElement element = getElementXpath(locator);
+            waitUntilElementIsVisible(element);
+
+            // Obtener las dimensiones de la pantalla
+            Dimension screenSize = getDriver().manage().window().getSize();
+            int startX = screenSize.width / 2; // Punto medio en el eje X
+            int startY = (int) (screenSize.height * 0.8); // Comenzar en el 80% de la altura
+            int endY = (int) (screenSize.height * 0.2); // Terminar en el 20% de la altura
+
+            // Realizar el desplazamiento
+            new TouchAction<>(DriverFactory.getDriver())
+                    .press(PointOption.point(startX, startY))
+                    .waitAction(WaitOptions.waitOptions(Duration.ofMillis(500)))
+                    .moveTo(PointOption.point(startX, endY))
+                    .release()
+                    .perform();
+
+            // Esperar un momento para permitir la visualización
+            waitTime(1);
+        } catch (Exception e) {
+            e.printStackTrace(); // Agregar manejo de excepciones adecuado
         }
     }
 }

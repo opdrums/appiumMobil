@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="1" name="Automate User App Login" skipped="0" tests="1" time="48.16" timestamp="2024-10-03 07:25:57"><testcase name="Login succes"><failure message="user not found in the app" type="java.lang.AssertionError">user not found in the app</failure><system-err>user not found in the app
+steps.loginUserStep.validateNameHomeScreen(loginUserStep.java:37)
+definitions.loginUserDefinition.homeScreenValidateUser(loginUserDefinition.java:28)
+✽.the user should see the home passenger screen(src/test/resources/features/loginUser.feature:9)
+</system-err></testcase></testsuite>

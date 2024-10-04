@@ -24,3 +24,15 @@ MODULO: booking --> ESCENARIO:
 MODULO: booking --> ESCENARIO: 
 MODULO: booking --> ESCENARIO: 
 MODULO: booking --> ESCENARIO: 
+MODULO: booking --> ESCENARIO: Login succes
+MODULO: booking --> ESCENARIO: successful logout
+MODULO: booking --> ESCENARIO: successful logout
+MODULO: booking --> ESCENARIO: successful logout
+MODULO: booking --> ESCENARIO: successful logout
+MODULO: booking --> ESCENARIO: successful logout
+MODULO: booking --> ESCENARIO: successful logout
+MODULO: booking --> ESCENARIO: successful logout
+MODULO: booking --> ESCENARIO: successful logout
+MODULO: booking --> ESCENARIO: successful logout
+MODULO: booking --> ESCENARIO: Register succesfully
+MODULO: booking --> ESCENARIO: Register succesfully incorrect
